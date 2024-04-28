@@ -1,0 +1,21 @@
+server:
+  port: 8088
+
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.200.119:8848
+        username: nacos
+        password: nacos
+    gateway:
+      routes:
+        - id: ps
+          uri: lb://platform-service
+          predicates:
+            - Path=/ps/**
+
+  application:
+    name: platform-gateway
+gateway:
+  privateKey: privateKey
